@@ -1,0 +1,2310 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Моё Дело API",
+		"_postman_id": "bdfc0b1b-ead7-b92c-2c7d-ca4ec3c8e392",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "accounting",
+			"description": "Документы сервиса:\n- Продажи\n- Покупки",
+			"item": [
+				{
+					"name": "Возвращает список актов",
+					"request": {
+						"url": "https://restapi.moedelo.org/accounting/api/v1/sales/act?pageNo={{pageNo}}&pageSize={{pageSize}}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Создает акт",
+					"request": {
+						"url": "https://restapi.moedelo.org/accounting/api/v1/sales/act",
+						"method": "POST",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "Модель акта"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Возвращает акт",
+					"request": {
+						"url": {
+							"raw": "https://restapi.moedelo.org/accounting/api/v1/sales/act/:id",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"restapi",
+								"moedelo",
+								"org"
+							],
+							"path": [
+								"accounting",
+								"api",
+								"v1",
+								"sales",
+								"act",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Обновляет акт",
+					"request": {
+						"url": {
+							"raw": "https://restapi.moedelo.org/accounting/api/v1/sales/act/:id",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"restapi",
+								"moedelo",
+								"org"
+							],
+							"path": [
+								"accounting",
+								"api",
+								"v1",
+								"sales",
+								"act",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "Модель акта"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Удаляет акт",
+					"request": {
+						"url": {
+							"raw": "https://restapi.moedelo.org/accounting/api/v1/sales/act/:id",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"restapi",
+								"moedelo",
+								"org"
+							],
+							"path": [
+								"accounting",
+								"api",
+								"v1",
+								"sales",
+								"act",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Возвращает список счетов",
+					"request": {
+						"url": "https://restapi.moedelo.org/accounting/api/v1/sales/bill?pageNo={{pageNo}}&pageSize={{pageSize}}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Создаёт счёт",
+					"request": {
+						"url": "https://restapi.moedelo.org/accounting/api/v1/sales/bill",
+						"method": "POST",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "Модель счета"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Возвращает счёт",
+					"request": {
+						"url": {
+							"raw": "https://restapi.moedelo.org/accounting/api/v1/sales/bill/:id",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"restapi",
+								"moedelo",
+								"org"
+							],
+							"path": [
+								"accounting",
+								"api",
+								"v1",
+								"sales",
+								"bill",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Обновляет счёт",
+					"request": {
+						"url": {
+							"raw": "https://restapi.moedelo.org/accounting/api/v1/sales/bill/:id",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"restapi",
+								"moedelo",
+								"org"
+							],
+							"path": [
+								"accounting",
+								"api",
+								"v1",
+								"sales",
+								"bill",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "Модель счёта"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Удаляет счёт",
+					"request": {
+						"url": {
+							"raw": "https://restapi.moedelo.org/accounting/api/v1/sales/bill/:id",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"restapi",
+								"moedelo",
+								"org"
+							],
+							"path": [
+								"accounting",
+								"api",
+								"v1",
+								"sales",
+								"bill",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Возвращает список счётов-фактур",
+					"request": {
+						"url": "https://restapi.moedelo.org/accounting/api/v1/sales/invoice?pageNo={{pageNo}}&pageSize={{pageSize}}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Cоздаёт счёт-фактуру",
+					"request": {
+						"url": "https://restapi.moedelo.org/accounting/api/v1/sales/invoice",
+						"method": "POST",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "Модель счёт-фактуры"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Возвращает счёт-фактуру",
+					"request": {
+						"url": {
+							"raw": "https://restapi.moedelo.org/accounting/api/v1/sales/invoice/:id",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"restapi",
+								"moedelo",
+								"org"
+							],
+							"path": [
+								"accounting",
+								"api",
+								"v1",
+								"sales",
+								"invoice",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Обновляет счёт-фактуру",
+					"request": {
+						"url": {
+							"raw": "https://restapi.moedelo.org/accounting/api/v1/sales/invoice/:id",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"restapi",
+								"moedelo",
+								"org"
+							],
+							"path": [
+								"accounting",
+								"api",
+								"v1",
+								"sales",
+								"invoice",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "Модель счёта-фактуры"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Удаляет счёт-фактуру",
+					"request": {
+						"url": {
+							"raw": "https://restapi.moedelo.org/accounting/api/v1/sales/invoice/:id",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"restapi",
+								"moedelo",
+								"org"
+							],
+							"path": [
+								"accounting",
+								"api",
+								"v1",
+								"sales",
+								"invoice",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Возвращает список отчётов о розничной продаже",
+					"request": {
+						"url": "https://restapi.moedelo.org/accounting/api/v1/sales/retailreport?pageNo={{pageNo}}&pageSize={{pageSize}}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Создаёт отчёт о розничной продаже",
+					"request": {
+						"url": "https://restapi.moedelo.org/accounting/api/v1/sales/retailreport",
+						"method": "POST",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "Модель отчёта о розничной продаже"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Возвращает отчёт о розничной продаже",
+					"request": {
+						"url": {
+							"raw": "https://restapi.moedelo.org/accounting/api/v1/sales/retailreport/:id",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"restapi",
+								"moedelo",
+								"org"
+							],
+							"path": [
+								"accounting",
+								"api",
+								"v1",
+								"sales",
+								"retailreport",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Обновляет отчёт о розничной продаже",
+					"request": {
+						"url": {
+							"raw": "https://restapi.moedelo.org/accounting/api/v1/sales/retailreport/:id",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"restapi",
+								"moedelo",
+								"org"
+							],
+							"path": [
+								"accounting",
+								"api",
+								"v1",
+								"sales",
+								"retailreport",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "Модель отчёта о розничной продаже"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Удаляет отчёт о розничной продаже",
+					"request": {
+						"url": {
+							"raw": "https://restapi.moedelo.org/accounting/api/v1/sales/retailreport/:id",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"restapi",
+								"moedelo",
+								"org"
+							],
+							"path": [
+								"accounting",
+								"api",
+								"v1",
+								"sales",
+								"retailreport",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Возвращает список накладных",
+					"request": {
+						"url": "https://restapi.moedelo.org/accounting/api/v1/sales/waybill?pageNo={{pageNo}}&pageSize={{pageSize}}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Создаёт накладную",
+					"request": {
+						"url": "https://restapi.moedelo.org/accounting/api/v1/sales/waybill",
+						"method": "POST",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "Модель накладной"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Возвращает накладную",
+					"request": {
+						"url": {
+							"raw": "https://restapi.moedelo.org/accounting/api/v1/sales/waybill/:id",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"restapi",
+								"moedelo",
+								"org"
+							],
+							"path": [
+								"accounting",
+								"api",
+								"v1",
+								"sales",
+								"waybill",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Обновляет накладную",
+					"request": {
+						"url": {
+							"raw": "https://restapi.moedelo.org/accounting/api/v1/sales/waybill/:id",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"restapi",
+								"moedelo",
+								"org"
+							],
+							"path": [
+								"accounting",
+								"api",
+								"v1",
+								"sales",
+								"waybill",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "Модель накладной"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Удаляет накладную",
+					"request": {
+						"url": {
+							"raw": "https://restapi.moedelo.org/accounting/api/v1/sales/waybill/:id",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"restapi",
+								"moedelo",
+								"org"
+							],
+							"path": [
+								"accounting",
+								"api",
+								"v1",
+								"sales",
+								"waybill",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "contract",
+			"description": "Доступ к Договорам компании.",
+			"item": [
+				{
+					"name": "Возвращает список договоров",
+					"request": {
+						"url": "https://restapi.moedelo.org/contract/api/v1/contract?pageNo={{pageNo}}&pageSize={{pageSize}}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Создаёт договор",
+					"request": {
+						"url": "https://restapi.moedelo.org/contract/api/v1/contract",
+						"method": "POST",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "Модель договора"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Возвращает договор",
+					"request": {
+						"url": {
+							"raw": "https://restapi.moedelo.org/contract/api/v1/contract/:id",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"restapi",
+								"moedelo",
+								"org"
+							],
+							"path": [
+								"contract",
+								"api",
+								"v1",
+								"contract",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Сохраняет существующий договор",
+					"request": {
+						"url": {
+							"raw": "https://restapi.moedelo.org/contract/api/v1/contract/:id",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"restapi",
+								"moedelo",
+								"org"
+							],
+							"path": [
+								"contract",
+								"api",
+								"v1",
+								"contract",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "Модель договора"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Удаляет договор",
+					"request": {
+						"url": {
+							"raw": "https://restapi.moedelo.org/contract/api/v1/contract/:id",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"restapi",
+								"moedelo",
+								"org"
+							],
+							"path": [
+								"contract",
+								"api",
+								"v1",
+								"contract",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Возвращает заметку договора",
+					"request": {
+						"url": {
+							"raw": "https://restapi.moedelo.org/contract/api/v1/contract/:contractId/notes/{noteId}",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"restapi",
+								"moedelo",
+								"org"
+							],
+							"path": [
+								"contract",
+								"api",
+								"v1",
+								"contract",
+								":contractId",
+								"notes",
+								"{noteId}"
+							],
+							"variable": [
+								{
+									"value": "{{contractId}}",
+									"id": "contractId"
+								},
+								{
+									"value": "{{noteId}}",
+									"id": "noteId"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Сохраняет заметку договора",
+					"request": {
+						"url": {
+							"raw": "https://restapi.moedelo.org/contract/api/v1/contract/:contractId/notes/{noteId}",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"restapi",
+								"moedelo",
+								"org"
+							],
+							"path": [
+								"contract",
+								"api",
+								"v1",
+								"contract",
+								":contractId",
+								"notes",
+								"{noteId}"
+							],
+							"variable": [
+								{
+									"value": "{{contractId}}",
+									"id": "contractId"
+								},
+								{
+									"value": "{{noteId}}",
+									"id": "noteId"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "Модель заметки"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Удаляет заметку договора",
+					"request": {
+						"url": {
+							"raw": "https://restapi.moedelo.org/contract/api/v1/contract/:contractId/notes/{noteId}",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"restapi",
+								"moedelo",
+								"org"
+							],
+							"path": [
+								"contract",
+								"api",
+								"v1",
+								"contract",
+								":contractId",
+								"notes",
+								"{noteId}"
+							],
+							"variable": [
+								{
+									"value": "{{contractId}}",
+									"id": "contractId"
+								},
+								{
+									"value": "{{noteId}}",
+									"id": "noteId"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Возвращает заметки договора",
+					"request": {
+						"url": {
+							"raw": "https://restapi.moedelo.org/contract/api/v1/contract/:contractId/notes",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"restapi",
+								"moedelo",
+								"org"
+							],
+							"path": [
+								"contract",
+								"api",
+								"v1",
+								"contract",
+								":contractId",
+								"notes"
+							],
+							"variable": [
+								{
+									"value": "{{contractId}}",
+									"id": "contractId"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Добавляет заметку в договор",
+					"request": {
+						"url": {
+							"raw": "https://restapi.moedelo.org/contract/api/v1/contract/:contractId/notes",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"restapi",
+								"moedelo",
+								"org"
+							],
+							"path": [
+								"contract",
+								"api",
+								"v1",
+								"contract",
+								":contractId",
+								"notes"
+							],
+							"variable": [
+								{
+									"value": "{{contractId}}",
+									"id": "contractId"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "Модель заметки"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "kontragents",
+			"description": "Доступ к справочнику контрагентов компании.",
+			"item": [
+				{
+					"name": "Возвращает список контрагентов",
+					"request": {
+						"url": "https://restapi.moedelo.org/kontragents/api/v1/kontragent?pageNo={{pageNo}}&pageSize={{pageSize}}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Создает контрагента",
+					"request": {
+						"url": "https://restapi.moedelo.org/kontragents/api/v1/kontragent",
+						"method": "POST",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "Модель контрагента"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Возвращает контрагента",
+					"request": {
+						"url": {
+							"raw": "https://restapi.moedelo.org/kontragents/api/v1/kontragent/:id",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"restapi",
+								"moedelo",
+								"org"
+							],
+							"path": [
+								"kontragents",
+								"api",
+								"v1",
+								"kontragent",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Сохраняет контрагента",
+					"request": {
+						"url": {
+							"raw": "https://restapi.moedelo.org/kontragents/api/v1/kontragent/:id",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"restapi",
+								"moedelo",
+								"org"
+							],
+							"path": [
+								"kontragents",
+								"api",
+								"v1",
+								"kontragent",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "Модель контрагента"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Удаляет контрагента",
+					"request": {
+						"url": {
+							"raw": "https://restapi.moedelo.org/kontragents/api/v1/kontragent/:id",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"restapi",
+								"moedelo",
+								"org"
+							],
+							"path": [
+								"kontragents",
+								"api",
+								"v1",
+								"kontragent",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Возвращает список расчётных счетов контрагента",
+					"request": {
+						"url": {
+							"raw": "https://restapi.moedelo.org/kontragents/api/v1/kontragent/:kontragentId/account",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"restapi",
+								"moedelo",
+								"org"
+							],
+							"path": [
+								"kontragents",
+								"api",
+								"v1",
+								"kontragent",
+								":kontragentId",
+								"account"
+							],
+							"variable": [
+								{
+									"value": "{{kontragentId}}",
+									"id": "kontragentId"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Сохраняет расчётный счёт контрагента",
+					"request": {
+						"url": {
+							"raw": "https://restapi.moedelo.org/kontragents/api/v1/kontragent/:kontragentId/account",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"restapi",
+								"moedelo",
+								"org"
+							],
+							"path": [
+								"kontragents",
+								"api",
+								"v1",
+								"kontragent",
+								":kontragentId",
+								"account"
+							],
+							"variable": [
+								{
+									"value": "{{kontragentId}}",
+									"id": "kontragentId"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "Модель расчётного счёта"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Возвращает расчётный счёт контрагента",
+					"request": {
+						"url": {
+							"raw": "https://restapi.moedelo.org/kontragents/api/v1/kontragent/:kontragentId/account/{accountId}",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"restapi",
+								"moedelo",
+								"org"
+							],
+							"path": [
+								"kontragents",
+								"api",
+								"v1",
+								"kontragent",
+								":kontragentId",
+								"account",
+								"{accountId}"
+							],
+							"variable": [
+								{
+									"value": "{{kontragentId}}",
+									"id": "kontragentId"
+								},
+								{
+									"value": "{{accountId}}",
+									"id": "accountId"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Обновляет расчётный счёт контрагента",
+					"request": {
+						"url": {
+							"raw": "https://restapi.moedelo.org/kontragents/api/v1/kontragent/:kontragentId/account/{accountId}",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"restapi",
+								"moedelo",
+								"org"
+							],
+							"path": [
+								"kontragents",
+								"api",
+								"v1",
+								"kontragent",
+								":kontragentId",
+								"account",
+								"{accountId}"
+							],
+							"variable": [
+								{
+									"value": "{{kontragentId}}",
+									"id": "kontragentId"
+								},
+								{
+									"value": "{{accountId}}",
+									"id": "accountId"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "Модель расчётного счёта"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Возвращает список контактов контрагента",
+					"request": {
+						"url": {
+							"raw": "https://restapi.moedelo.org/kontragents/api/v1/kontragent/:kontragentId/contact",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"restapi",
+								"moedelo",
+								"org"
+							],
+							"path": [
+								"kontragents",
+								"api",
+								"v1",
+								"kontragent",
+								":kontragentId",
+								"contact"
+							],
+							"variable": [
+								{
+									"value": "{{kontragentId}}",
+									"id": "kontragentId"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Создает контакт контрагента",
+					"request": {
+						"url": {
+							"raw": "https://restapi.moedelo.org/kontragents/api/v1/kontragent/:kontragentId/contact",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"restapi",
+								"moedelo",
+								"org"
+							],
+							"path": [
+								"kontragents",
+								"api",
+								"v1",
+								"kontragent",
+								":kontragentId",
+								"contact"
+							],
+							"variable": [
+								{
+									"value": "{{kontragentId}}",
+									"id": "kontragentId"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "Модель контакта контрагента"
+						},
+						"description": "Этот метод выглядит бесполезным.\r\n            Более вероятен случай сохранения списка контактов. Включить ресурс в основной ресурс контрагента."
+					},
+					"response": []
+				},
+				{
+					"name": "Возвращает контакт контрагента",
+					"request": {
+						"url": {
+							"raw": "https://restapi.moedelo.org/kontragents/api/v1/kontragent/:kontragentId/contact/{contactId}",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"restapi",
+								"moedelo",
+								"org"
+							],
+							"path": [
+								"kontragents",
+								"api",
+								"v1",
+								"kontragent",
+								":kontragentId",
+								"contact",
+								"{contactId}"
+							],
+							"variable": [
+								{
+									"value": "{{kontragentId}}",
+									"id": "kontragentId"
+								},
+								{
+									"value": "{{contactId}}",
+									"id": "contactId"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Сохраняет контакт контрагента",
+					"request": {
+						"url": {
+							"raw": "https://restapi.moedelo.org/kontragents/api/v1/kontragent/:kontragentId/contact/{contactId}",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"restapi",
+								"moedelo",
+								"org"
+							],
+							"path": [
+								"kontragents",
+								"api",
+								"v1",
+								"kontragent",
+								":kontragentId",
+								"contact",
+								"{contactId}"
+							],
+							"variable": [
+								{
+									"value": "{{kontragentId}}",
+									"id": "kontragentId"
+								},
+								{
+									"value": "{{contactId}}",
+									"id": "contactId"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "Модель контакта контрагента"
+						},
+						"description": "Этот метод выглядит бесполезным.\r\n            Более вероятен случай сохранения списка контактов. Включить ресурс в основной ресурс контрагента."
+					},
+					"response": []
+				},
+				{
+					"name": "Удаляет контакт контрагента",
+					"request": {
+						"url": {
+							"raw": "https://restapi.moedelo.org/kontragents/api/v1/kontragent/:kontragentId/contact/{contactId}",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"restapi",
+								"moedelo",
+								"org"
+							],
+							"path": [
+								"kontragents",
+								"api",
+								"v1",
+								"kontragent",
+								":kontragentId",
+								"contact",
+								"{contactId}"
+							],
+							"variable": [
+								{
+									"value": "{{kontragentId}}",
+									"id": "kontragentId"
+								},
+								{
+									"value": "{{contactId}}",
+									"id": "contactId"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "stock",
+			"description": "Доступ к справочнику товаров и списку складов компании.",
+			"item": [
+				{
+					"name": "Возвращает список товаров",
+					"request": {
+						"url": "https://restapi.moedelo.org/stock/api/v1/good?pageNo={{pageNo}}&pageSize={{pageSize}}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Создает товар",
+					"request": {
+						"url": "https://restapi.moedelo.org/stock/api/v1/good",
+						"method": "POST",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "Модель товара"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Возвращает товар",
+					"request": {
+						"url": {
+							"raw": "https://restapi.moedelo.org/stock/api/v1/good/:id",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"restapi",
+								"moedelo",
+								"org"
+							],
+							"path": [
+								"stock",
+								"api",
+								"v1",
+								"good",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Обновляет товар",
+					"request": {
+						"url": {
+							"raw": "https://restapi.moedelo.org/stock/api/v1/good/:id",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"restapi",
+								"moedelo",
+								"org"
+							],
+							"path": [
+								"stock",
+								"api",
+								"v1",
+								"good",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "Модель товара"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Удаляет товар",
+					"request": {
+						"url": {
+							"raw": "https://restapi.moedelo.org/stock/api/v1/good/:id",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"restapi",
+								"moedelo",
+								"org"
+							],
+							"path": [
+								"stock",
+								"api",
+								"v1",
+								"good",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Возвращает список номенклатур",
+					"request": {
+						"url": "https://restapi.moedelo.org/stock/api/v1/nomenclature",
+						"method": "GET",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Создает номенклатуру",
+					"request": {
+						"url": "https://restapi.moedelo.org/stock/api/v1/nomenclature",
+						"method": "POST",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "Модель номенклатуры"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Возвращает номеклатуру",
+					"request": {
+						"url": {
+							"raw": "https://restapi.moedelo.org/stock/api/v1/nomenclature/:id",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"restapi",
+								"moedelo",
+								"org"
+							],
+							"path": [
+								"stock",
+								"api",
+								"v1",
+								"nomenclature",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Обновляет номенклатуру",
+					"request": {
+						"url": {
+							"raw": "https://restapi.moedelo.org/stock/api/v1/nomenclature/:id",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"restapi",
+								"moedelo",
+								"org"
+							],
+							"path": [
+								"stock",
+								"api",
+								"v1",
+								"nomenclature",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "Модель номенклатуры"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Возвращает список складов",
+					"request": {
+						"url": "https://restapi.moedelo.org/stock/api/v1/stock?pageNo={{pageNo}}&pageSize={{pageSize}}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Создает склад",
+					"request": {
+						"url": "https://restapi.moedelo.org/stock/api/v1/stock",
+						"method": "POST",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "Модель склада"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Возвращает склад",
+					"request": {
+						"url": {
+							"raw": "https://restapi.moedelo.org/stock/api/v1/stock/:id",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"restapi",
+								"moedelo",
+								"org"
+							],
+							"path": [
+								"stock",
+								"api",
+								"v1",
+								"stock",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Обновляет склад",
+					"request": {
+						"url": {
+							"raw": "https://restapi.moedelo.org/stock/api/v1/stock/:id",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"restapi",
+								"moedelo",
+								"org"
+							],
+							"path": [
+								"stock",
+								"api",
+								"v1",
+								"stock",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "Модель склада"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Удаляет склад",
+					"request": {
+						"url": {
+							"raw": "https://restapi.moedelo.org/stock/api/v1/stock/:id",
+							"protocol": "https",
+							"auth": {},
+							"host": [
+								"restapi",
+								"moedelo",
+								"org"
+							],
+							"path": [
+								"stock",
+								"api",
+								"v1",
+								"stock",
+								":id"
+							],
+							"variable": [
+								{
+									"value": "{{id}}",
+									"id": "id"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "md-api-key",
+								"value": "{{YOUR_MD_API_KEY}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

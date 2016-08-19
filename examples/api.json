@@ -1,0 +1,5396 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Моё Дело API",
+    "version": "1.0"
+  },
+  "host": "restapi.moedelo.org",
+  "basePath": "/",
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "paths": {
+    "/contract/api/v1/contract": {
+      "get": {
+        "tags": [
+          "Договора"
+        ],
+        "summary": "Возвращает список договоров",
+        "operationId": "Contract_GetWithPagingAsync",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "pageNo",
+            "in": "query",
+            "description": "Страница выборки",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Размер страницы выборки",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ContractRepresentationCollection"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "Договора"
+        ],
+        "summary": "Создаёт договор",
+        "operationId": "Contract_Post",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "contractModel",
+            "in": "body",
+            "description": "Модель договора",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ContractModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ContractRepresentation"
+            }
+          },
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/ContractRepresentation"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "422": {
+            "description": "422"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/contract/api/v1/contract/{id}": {
+      "get": {
+        "tags": [
+          "Договора"
+        ],
+        "summary": "Возвращает договор",
+        "operationId": "Contract_Get",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Числовой идентификатор договора",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ContractRepresentation"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "404": {
+            "description": "NotFound"
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "Договора"
+        ],
+        "summary": "Сохраняет существующий договор",
+        "operationId": "Contract_Put",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Числовой идентификатор договора",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "contractModel",
+            "in": "body",
+            "description": "Модель договора",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ContractModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ContractRepresentation"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "404": {
+            "description": "NotFound"
+          },
+          "422": {
+            "description": "Validation Failed"
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": [
+          "Договора"
+        ],
+        "summary": "Удаляет договор",
+        "operationId": "Contract_Delete",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Числовой идентификатор договора",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Object"
+            }
+          },
+          "204": {
+            "description": "NoContent"
+          },
+          "400": {
+            "description": "BadRequest"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/contract/api/v1/contract/{contractId}/notes/{noteId}": {
+      "get": {
+        "tags": [
+          "Договора"
+        ],
+        "summary": "Возвращает заметку договора",
+        "operationId": "Contract_GetNoteByContract",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "contractId",
+            "in": "path",
+            "description": "Числовой идентификатор договора",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "noteId",
+            "in": "path",
+            "description": "Числовой идентификатор заметки",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/NoteRepresentation"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "404": {
+            "description": "NotFound"
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "Договора"
+        ],
+        "summary": "Сохраняет заметку договора",
+        "operationId": "Contract_PutNoteToContract",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "contractId",
+            "in": "path",
+            "description": "Числовой идентификатор договора",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "noteId",
+            "in": "path",
+            "description": "Числовой идентификатор заметки",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "noteModel",
+            "in": "body",
+            "description": "Модель заметки",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NoteModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/NoteRepresentation"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "404": {
+            "description": "NotFound"
+          },
+          "422": {
+            "description": "422"
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": [
+          "Договора"
+        ],
+        "summary": "Удаляет заметку договора",
+        "operationId": "Contract_Delete",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "contractId",
+            "in": "path",
+            "description": "Числовой идентификатор договора",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "noteId",
+            "in": "path",
+            "description": "Числовой идентификатор заметки",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Object"
+            }
+          },
+          "204": {
+            "description": "NoContent"
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "404": {
+            "description": "NotFound"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/contract/api/v1/contract/{contractId}/notes": {
+      "get": {
+        "tags": [
+          "Договора"
+        ],
+        "summary": "Возвращает заметки договора",
+        "operationId": "Contract_GetNotesByContract",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "contractId",
+            "in": "path",
+            "description": "Числовой идентификатор договора",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/NoteRepresentationCollection"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "Договора"
+        ],
+        "summary": "Добавляет заметку в договор",
+        "operationId": "Contract_PostNoteToContract",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "contractId",
+            "in": "path",
+            "description": "Числовой идентификатор договора",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "noteModel",
+            "in": "body",
+            "description": "Модель заметки",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NoteModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/NoteRepresentation"
+            }
+          },
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/NoteRepresentation"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "422": {
+            "description": "422"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/stock/api/v1/good": {
+      "get": {
+        "tags": [
+          "Товары"
+        ],
+        "summary": "Возвращает список товаров",
+        "operationId": "Good_Get",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "pageNo",
+            "in": "query",
+            "description": "Страница выборки",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Размер страницы выборки",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/GoodRepresentationCollection"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "Товары"
+        ],
+        "summary": "Создает товар",
+        "operationId": "Good_Post",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "good",
+            "in": "body",
+            "description": "Модель товара",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GoodModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/GoodRepresentation"
+            }
+          },
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/GoodRepresentation"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "422": {
+            "description": "Validation Failed"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/stock/api/v1/good/{id}": {
+      "get": {
+        "tags": [
+          "Товары"
+        ],
+        "summary": "Возвращает товар",
+        "operationId": "Good_Get",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Числовой идентификатор товара",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/GoodRepresentation"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "404": {
+            "description": "NotFound"
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "Товары"
+        ],
+        "summary": "Обновляет товар",
+        "operationId": "Good_Put",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Числовой идентификатор товара",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "goodModel",
+            "in": "body",
+            "description": "Модель товара",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GoodModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/GoodRepresentation"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "404": {
+            "description": "NotFound"
+          },
+          "422": {
+            "description": "Validation Failed"
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": [
+          "Товары"
+        ],
+        "summary": "Удаляет товар",
+        "operationId": "Good_Delete",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Числовой идентификатор товара",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Object"
+            }
+          },
+          "204": {
+            "description": "NoContent"
+          },
+          "400": {
+            "description": "BadRequest"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/stock/api/v1/nomenclature": {
+      "get": {
+        "tags": [
+          "Номенклатуры"
+        ],
+        "summary": "Возвращает список номенклатур",
+        "operationId": "Nomenclature_Get",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/NomenclatureRepresentationCollection"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "Номенклатуры"
+        ],
+        "summary": "Создает номенклатуру",
+        "operationId": "Nomenclature_Post",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "nomenclatureModel",
+            "in": "body",
+            "description": "Модель номенклатуры",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NomenclatureModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/NomenclatureRepresentation"
+            }
+          },
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/NomenclatureRepresentation"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "422": {
+            "description": "Validation Failed"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/stock/api/v1/nomenclature/{id}": {
+      "get": {
+        "tags": [
+          "Номенклатуры"
+        ],
+        "summary": "Возвращает номеклатуру",
+        "operationId": "Nomenclature_Get",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Числовой идентификатор номеклатуры",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/NomenclatureRepresentation"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "404": {
+            "description": "NotFound"
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "Номенклатуры"
+        ],
+        "summary": "Обновляет номенклатуру",
+        "operationId": "Nomenclature_Put",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Числовой идентификатор номенклатуры",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "nomenclatureModel",
+            "in": "body",
+            "description": "Модель номенклатуры",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NomenclatureModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/NomenclatureRepresentation"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "404": {
+            "description": "NotFound"
+          },
+          "422": {
+            "description": "Validation Failed"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/stock/api/v1/stock": {
+      "get": {
+        "tags": [
+          "Склады"
+        ],
+        "summary": "Возвращает список складов",
+        "operationId": "Stock_Get",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "pageNo",
+            "in": "query",
+            "description": "Страница выборки",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Размер страницы выборки",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/StockRepresentationCollection"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "Склады"
+        ],
+        "summary": "Создает склад",
+        "operationId": "Stock_Post",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "stockModel",
+            "in": "body",
+            "description": "Модель склада",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/StockModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/StockRepresentation"
+            }
+          },
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/StockRepresentation"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "422": {
+            "description": "Validation Failed"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/stock/api/v1/stock/{id}": {
+      "get": {
+        "tags": [
+          "Склады"
+        ],
+        "summary": "Возвращает склад",
+        "operationId": "Stock_Get",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Числовой идентификатор склада",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/StockRepresentation"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "404": {
+            "description": "NotFound"
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "Склады"
+        ],
+        "summary": "Обновляет склад",
+        "operationId": "Stock_Put",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Числовой идентификатор cклада",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "stockModel",
+            "in": "body",
+            "description": "Модель склада",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/StockModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/StockRepresentation"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "404": {
+            "description": "NotFound"
+          },
+          "422": {
+            "description": "Validation Failed"
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": [
+          "Склады"
+        ],
+        "summary": "Удаляет склад",
+        "operationId": "Stock_Delete",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Числовой идентификатор склада",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Object"
+            }
+          },
+          "204": {
+            "description": "NoContent"
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/kontragents/api/v1/kontragent": {
+      "get": {
+        "tags": [
+          "Контрагенты"
+        ],
+        "summary": "Возвращает список контрагентов",
+        "operationId": "Kontragent_Get",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "pageNo",
+            "in": "query",
+            "description": "Страница выборки",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Размер страницы выборки",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/KontragentRepresentationCollection"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "Контрагенты"
+        ],
+        "summary": "Создает контрагента",
+        "operationId": "Kontragent_Post",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "kontragentModel",
+            "in": "body",
+            "description": "Модель контрагента",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/KontragentModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/KontragentRepresentation"
+            }
+          },
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/KontragentRepresentation"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "422": {
+            "description": "422"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/kontragents/api/v1/kontragent/{id}": {
+      "get": {
+        "tags": [
+          "Контрагенты"
+        ],
+        "summary": "Возвращает контрагента",
+        "operationId": "Kontragent_Get",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Числовой идентификатор контрагента",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/KontragentRepresentation"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "404": {
+            "description": "NotFound"
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "Контрагенты"
+        ],
+        "summary": "Сохраняет контрагента",
+        "operationId": "Kontragent_Put",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Числовой идентификатор контрагента",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "kontragentModel",
+            "in": "body",
+            "description": "Модель контрагента",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/KontragentModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/KontragentRepresentation"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "404": {
+            "description": "NotFound"
+          },
+          "422": {
+            "description": "422"
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": [
+          "Контрагенты"
+        ],
+        "summary": "Удаляет контрагента",
+        "operationId": "Kontragent_Delete",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Числовой идентификатор контрагента",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Object"
+            }
+          },
+          "204": {
+            "description": "NoContent"
+          },
+          "400": {
+            "description": "BadRequest"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/kontragents/api/v1/kontragent/{kontragentId}/account": {
+      "get": {
+        "tags": [
+          "Контрагенты"
+        ],
+        "summary": "Возвращает список расчётных счетов контрагента",
+        "operationId": "Kontragent_GetAccountsByKontragent",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "kontragentId",
+            "in": "path",
+            "description": "Числовой идентификатор контрагента",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/KontragentSettlementAccountRepresentationCollection"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "Контрагенты"
+        ],
+        "summary": "Сохраняет расчётный счёт контрагента",
+        "operationId": "Kontragent_PostAccountToKontragent",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "kontragentId",
+            "in": "path",
+            "description": "Числовой идентификатор контрагента",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "settlementAccountModel",
+            "in": "body",
+            "description": "Модель расчётного счёта",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/KontragentSettlementAccountModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/KontragentSettlementAccountRepresentation"
+            }
+          },
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/KontragentSettlementAccountRepresentation"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "422": {
+            "description": "422"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/kontragents/api/v1/kontragent/{kontragentId}/account/{accountId}": {
+      "get": {
+        "tags": [
+          "Контрагенты"
+        ],
+        "summary": "Возвращает расчётный счёт контрагента",
+        "operationId": "Kontragent_GetAccountByKontragent",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "kontragentId",
+            "in": "path",
+            "description": "Числовой идентификатор контрагента",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "accountId",
+            "in": "path",
+            "description": "Числовой идентификатор расчётного счёта",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Расчётный счёт контрагента",
+            "schema": {
+              "$ref": "#/definitions/KontragentSettlementAccountRepresentation"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "404": {
+            "description": "NotFound"
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "Контрагенты"
+        ],
+        "summary": "Обновляет расчётный счёт контрагента",
+        "operationId": "Kontragent_PutAccountToKontragent",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "kontragentId",
+            "in": "path",
+            "description": "Числовой идентификатор контрагента",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "accountId",
+            "in": "path",
+            "description": "Числовой идентификатор расчётного счёта",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "settlementAccountModel",
+            "in": "body",
+            "description": "Модель расчётного счёта",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/KontragentSettlementAccountModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/KontragentSettlementAccountRepresentation"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "404": {
+            "description": "NotFound"
+          },
+          "422": {
+            "description": "422"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/kontragents/api/v1/kontragent/{kontragentId}/contact": {
+      "get": {
+        "tags": [
+          "Контрагенты"
+        ],
+        "summary": "Возвращает список контактов контрагента",
+        "operationId": "Kontragent_GetContactsByKontragent",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "kontragentId",
+            "in": "path",
+            "description": "Числовой идентификатор контрагента",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/KontragentContactRepresentationCollection"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "Контрагенты"
+        ],
+        "summary": "Создает контакт контрагента",
+        "description": "Этот метод выглядит бесполезным.\r\n            Более вероятен случай сохранения списка контактов. Включить ресурс в основной ресурс контрагента.",
+        "operationId": "Kontragent_PostContactToKontragent",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "kontragentId",
+            "in": "path",
+            "description": "Числовой идентификатор контрагента",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "kontragentContactModel",
+            "in": "body",
+            "description": "Модель контакта контрагента",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/KontragentContactModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/KontragentContactRepresentation"
+            }
+          },
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/KontragentContactRepresentation"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "422": {
+            "description": "422"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/kontragents/api/v1/kontragent/{kontragentId}/contact/{contactId}": {
+      "get": {
+        "tags": [
+          "Контрагенты"
+        ],
+        "summary": "Возвращает контакт контрагента",
+        "operationId": "Kontragent_GetContactByKontragent",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "kontragentId",
+            "in": "path",
+            "description": "Числовой идентификатор контрагента",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "contactId",
+            "in": "path",
+            "description": "Числовой идентификатор контакта контрагента",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/KontragentContactRepresentation"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "404": {
+            "description": "NotFound"
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "Контрагенты"
+        ],
+        "summary": "Сохраняет контакт контрагента",
+        "description": "Этот метод выглядит бесполезным.\r\n            Более вероятен случай сохранения списка контактов. Включить ресурс в основной ресурс контрагента.",
+        "operationId": "Kontragent_PutContactToKontragent",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "kontragentId",
+            "in": "path",
+            "description": "Числовой идентификатор контрагента",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "contactId",
+            "in": "path",
+            "description": "Числовой идентификатор контакта контрагента",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "kontragentContactModel",
+            "in": "body",
+            "description": "Модель контакта контрагента",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/KontragentContactModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/KontragentContactRepresentation"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "404": {
+            "description": "NotFound"
+          },
+          "422": {
+            "description": "422"
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": [
+          "Контрагенты"
+        ],
+        "summary": "Удаляет контакт контрагента",
+        "description": "",
+        "operationId": "Kontragent_DeleteContactFromKontragent",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "kontragentId",
+            "in": "path",
+            "description": "Числовой идентификатор контрагента",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "contactId",
+            "in": "path",
+            "description": "Числовой идентификатор контакта контрагента",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Object"
+            }
+          },
+          "204": {
+            "description": "NoContent"
+          },
+          "400": {
+            "description": "BadRequest"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/accounting/api/v1/sales/act": {
+      "get": {
+        "tags": [
+          "Акты"
+        ],
+        "summary": "Возвращает список актов",
+        "operationId": "Act_Get",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "pageNo",
+            "in": "query",
+            "description": "Страница выборки",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Размер страницы выборки",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ActRepresentationCollection"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "Акты"
+        ],
+        "summary": "Создает акт",
+        "operationId": "Act_Post",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "actModel",
+            "in": "body",
+            "description": "Модель акта",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ActModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ActRepresentation"
+            }
+          },
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/ActRepresentation"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "422": {
+            "description": "Validation Failed"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/accounting/api/v1/sales/act/{id}": {
+      "get": {
+        "tags": [
+          "Акты"
+        ],
+        "summary": "Возвращает акт",
+        "operationId": "Act_Get",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Числовой идентификатор акта",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ActRepresentation"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "404": {
+            "description": "NotFound"
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "Акты"
+        ],
+        "summary": "Обновляет акт",
+        "operationId": "Act_Put",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Числовой идентификатор акта",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "actModel",
+            "in": "body",
+            "description": "Модель акта",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ActModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ActRepresentation"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "404": {
+            "description": "NotFound"
+          },
+          "422": {
+            "description": "Validation Failed"
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": [
+          "Акты"
+        ],
+        "summary": "Удаляет акт",
+        "operationId": "Act_Delete",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Числовой идентификатор акта",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Object"
+            }
+          },
+          "204": {
+            "description": "NoContent"
+          },
+          "400": {
+            "description": "BadRequest"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/accounting/api/v1/sales/bill": {
+      "get": {
+        "tags": [
+          "Счета"
+        ],
+        "summary": "Возвращает список счетов",
+        "operationId": "Bill_Get",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "pageNo",
+            "in": "query",
+            "description": "Страница выборки",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Размер страницы выборки",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/BillRepresentationCollection"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "Счета"
+        ],
+        "summary": "Создаёт счёт",
+        "operationId": "Bill_Post",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "billModel",
+            "in": "body",
+            "description": "Модель счета",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BillPostModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/BillRepresentation"
+            }
+          },
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/BillRepresentation"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "422": {
+            "description": "Validation Failed"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/accounting/api/v1/sales/bill/{id}": {
+      "get": {
+        "tags": [
+          "Счета"
+        ],
+        "summary": "Возвращает счёт",
+        "operationId": "Bill_Get",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Числовой идентификатор счёта",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/BillRepresentation"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "404": {
+            "description": "NotFound"
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "Счета"
+        ],
+        "summary": "Обновляет счёт",
+        "operationId": "Bill_Put",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Числовой идентификатор счёта",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "billModel",
+            "in": "body",
+            "description": "Модель счёта",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BillBaseModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/BillRepresentation"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "404": {
+            "description": "NotFound"
+          },
+          "422": {
+            "description": "Validation Failed"
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": [
+          "Счета"
+        ],
+        "summary": "Удаляет счёт",
+        "operationId": "Bill_Delete",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Числовой идентификатор счёта",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Object"
+            }
+          },
+          "204": {
+            "description": "NoContent"
+          },
+          "400": {
+            "description": "BadRequest"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/accounting/api/v1/sales/invoice": {
+      "get": {
+        "tags": [
+          "Счета-фактуры"
+        ],
+        "summary": "Возвращает список счётов-фактур",
+        "operationId": "Invoice_Get",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "pageNo",
+            "in": "query",
+            "description": "Страница выборки",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Размер страницы выборки",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/InvoiceRepresentationCollection"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "Счета-фактуры"
+        ],
+        "summary": "Cоздаёт счёт-фактуру",
+        "operationId": "Invoice_Post",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "invoiceModel",
+            "in": "body",
+            "description": "Модель счёт-фактуры",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InvoiceModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/InvoiceRepresentation"
+            }
+          },
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/InvoiceRepresentation"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "422": {
+            "description": "Validation Failed"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/accounting/api/v1/sales/invoice/{id}": {
+      "get": {
+        "tags": [
+          "Счета-фактуры"
+        ],
+        "summary": "Возвращает счёт-фактуру",
+        "operationId": "Invoice_Get",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Числовой идентификатор счёт-фактуры",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/InvoiceRepresentation"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "Счета-фактуры"
+        ],
+        "summary": "Обновляет счёт-фактуру",
+        "operationId": "Invoice_Put",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Числовой идентификатор счёта-фактуры",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "invoiceModel",
+            "in": "body",
+            "description": "Модель счёта-фактуры",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InvoiceModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/InvoiceRepresentation"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "404": {
+            "description": "NotFound"
+          },
+          "422": {
+            "description": "Validation Failed"
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": [
+          "Счета-фактуры"
+        ],
+        "summary": "Удаляет счёт-фактуру",
+        "operationId": "Invoice_Delete",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Числовой идентификатор счета-фактуры",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Object"
+            }
+          },
+          "204": {
+            "description": "NoContent"
+          },
+          "400": {
+            "description": "BadRequest"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/accounting/api/v1/sales/retailreport": {
+      "get": {
+        "tags": [
+          "Отчёты о розничной продаже"
+        ],
+        "summary": "Возвращает список отчётов о розничной продаже",
+        "operationId": "RetailReport_Get",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "pageNo",
+            "in": "query",
+            "description": "Страница выборки",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Размер страницы выборки",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/RetailReportRepresentationCollection"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "Отчёты о розничной продаже"
+        ],
+        "summary": "Создаёт отчёт о розничной продаже",
+        "operationId": "RetailReport_Post",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "retailReportModel",
+            "in": "body",
+            "description": "Модель отчёта о розничной продаже",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RetailReportPostModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/RetailReportRepresentation"
+            }
+          },
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/RetailReportRepresentation"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "422": {
+            "description": "Validation Failed"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/accounting/api/v1/sales/retailreport/{id}": {
+      "get": {
+        "tags": [
+          "Отчёты о розничной продаже"
+        ],
+        "summary": "Возвращает отчёт о розничной продаже",
+        "operationId": "RetailReport_Get",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Числовой идентификатор отчёта о розничной продаже",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/RetailReportRepresentation"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "404": {
+            "description": "NotFound"
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "Отчёты о розничной продаже"
+        ],
+        "summary": "Обновляет отчёт о розничной продаже",
+        "operationId": "RetailReport_Put",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Числовой идентификатор отчёта о розничной продаже",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "retailReportModel",
+            "in": "body",
+            "description": "Модель отчёта о розничной продаже",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RetailReportBaseModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/RetailReportRepresentation"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "404": {
+            "description": "NotFound"
+          },
+          "422": {
+            "description": "Validation Failed"
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": [
+          "Отчёты о розничной продаже"
+        ],
+        "summary": "Удаляет отчёт о розничной продаже",
+        "operationId": "RetailReport_Delete",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Числовой идентификатор отчёта о розничной продаже",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Object"
+            }
+          },
+          "204": {
+            "description": "NoContent"
+          },
+          "400": {
+            "description": "BadRequest"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/accounting/api/v1/sales/waybill": {
+      "get": {
+        "tags": [
+          "Накладные"
+        ],
+        "summary": "Возвращает список накладных",
+        "operationId": "WayBill_Get",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "pageNo",
+            "in": "query",
+            "description": "Страница выборки",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Размер страницы выборки",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WayBillRepresentationCollection"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "Накладные"
+        ],
+        "summary": "Создаёт накладную",
+        "operationId": "WayBill_Post",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "wayBillModel",
+            "in": "body",
+            "description": "Модель накладной",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/WayBillModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WayBillRepresentation"
+            }
+          },
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/WayBillRepresentation"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "422": {
+            "description": "Validation Failed"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/accounting/api/v1/sales/waybill/{id}": {
+      "get": {
+        "tags": [
+          "Накладные"
+        ],
+        "summary": "Возвращает накладную",
+        "operationId": "WayBill_Get",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Числовой идентификатор накладных",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WayBillRepresentation"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "404": {
+            "description": "NotFound"
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "Накладные"
+        ],
+        "summary": "Обновляет накладную",
+        "operationId": "WayBill_Put",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/hal+json",
+          "application/hal+xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Числовой идентификатор накладной",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "wayBillModel",
+            "in": "body",
+            "description": "Модель накладной",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/WayBillModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WayBillRepresentation"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "404": {
+            "description": "NotFound"
+          },
+          "422": {
+            "description": "Validation Failed"
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": [
+          "Накладные"
+        ],
+        "summary": "Удаляет накладную",
+        "operationId": "WayBill_Delete",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Числовой идентификатор накладной",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Object"
+            }
+          },
+          "204": {
+            "description": "NoContent"
+          },
+          "400": {
+            "description": "BadRequest"
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "definitions": {
+    "ContractRepresentationCollection": {
+      "type": "object",
+      "properties": {
+        "ResourceList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ContractRepresentation"
+          }
+        },
+        "_links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        },
+        "_embedded": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EmbeddedResource"
+          }
+        }
+      }
+    },
+    "ContractRepresentation": {
+      "required": [
+        "Number"
+      ],
+      "type": "object",
+      "properties": {
+        "Id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Number": {
+          "type": "string"
+        },
+        "DocDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Sum": {
+          "format": "double",
+          "type": "number"
+        },
+        "EndDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "IsArchived": {
+          "type": "boolean"
+        },
+        "ContractStatus": {
+          "type": "string"
+        },
+        "KontragentId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Project": {
+          "$ref": "#/definitions/Project"
+        },
+        "Context": {
+          "$ref": "#/definitions/Context"
+        },
+        "_links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        },
+        "_embedded": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EmbeddedResource"
+          }
+        }
+      }
+    },
+    "Link": {
+      "type": "object",
+      "properties": {
+        "Curie": {
+          "$ref": "#/definitions/CuriesLink",
+          "readOnly": true
+        },
+        "Rel": {
+          "type": "string"
+        },
+        "Href": {
+          "type": "string"
+        },
+        "Title": {
+          "type": "string"
+        },
+        "Type": {
+          "type": "string"
+        },
+        "Deprecation": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Profile": {
+          "type": "string"
+        },
+        "HrefLang": {
+          "type": "string"
+        },
+        "IsTemplated": {
+          "type": "boolean",
+          "readOnly": true
+        }
+      }
+    },
+    "EmbeddedResource": {
+      "type": "object",
+      "properties": {
+        "IsSourceAnArray": {
+          "type": "boolean"
+        },
+        "Resources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/IResource"
+          },
+          "readOnly": true
+        }
+      }
+    },
+    "Project": {
+      "type": "object",
+      "properties": {
+        "Id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Name": {
+          "type": "string"
+        }
+      }
+    },
+    "Context": {
+      "type": "object",
+      "properties": {
+        "CreateDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "ModifyDate": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "CuriesLink": {
+      "type": "object",
+      "properties": {
+        "Name": {
+          "type": "string",
+          "readOnly": true
+        },
+        "Href": {
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "IResource": {
+      "type": "object",
+      "properties": {
+        "_links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        }
+      }
+    },
+    "ContractModel": {
+      "required": [
+        "Number"
+      ],
+      "type": "object",
+      "properties": {
+        "Id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Number": {
+          "type": "string"
+        },
+        "DocDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Sum": {
+          "format": "double",
+          "type": "number"
+        },
+        "EndDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "IsArchived": {
+          "type": "boolean"
+        },
+        "ContractStatus": {
+          "type": "string"
+        },
+        "KontragentId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Project": {
+          "$ref": "#/definitions/Project"
+        }
+      }
+    },
+    "Object": {
+      "type": "object",
+      "properties": {}
+    },
+    "NoteRepresentation": {
+      "type": "object",
+      "properties": {
+        "Id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "NotifyDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "Text": {
+          "type": "string"
+        },
+        "IsCompleted": {
+          "type": "boolean"
+        },
+        "_links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        },
+        "_embedded": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EmbeddedResource"
+          }
+        }
+      }
+    },
+    "NoteModel": {
+      "type": "object",
+      "properties": {
+        "Id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "NotifyDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "Text": {
+          "type": "string"
+        },
+        "IsCompleted": {
+          "type": "boolean"
+        }
+      }
+    },
+    "NoteRepresentationCollection": {
+      "type": "object",
+      "properties": {
+        "ContractId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ResourceList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NoteRepresentation"
+          }
+        },
+        "_links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        },
+        "_embedded": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EmbeddedResource"
+          }
+        }
+      }
+    },
+    "GoodRepresentationCollection": {
+      "type": "object",
+      "properties": {
+        "ResourceList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GoodRepresentation"
+          }
+        },
+        "_links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        },
+        "_embedded": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EmbeddedResource"
+          }
+        }
+      }
+    },
+    "GoodRepresentation": {
+      "required": [
+        "NomenclatureId",
+        "Name",
+        "UnitOfMeasurement",
+        "Nds",
+        "SalePrice",
+        "Type"
+      ],
+      "type": "object",
+      "properties": {
+        "Id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "FirmId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "NomenclatureId": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Article": {
+          "type": "string"
+        },
+        "UnitOfMeasurement": {
+          "type": "string"
+        },
+        "Nds": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "SalePrice": {
+          "format": "double",
+          "type": "number"
+        },
+        "IsDeleted": {
+          "type": "boolean"
+        },
+        "Type": {
+          "format": "int32",
+          "enum": [
+            0,
+            1,
+            -1
+          ],
+          "type": "integer"
+        },
+        "NdsPositionType": {
+          "format": "int32",
+          "enum": [
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        },
+        "_links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        },
+        "_embedded": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EmbeddedResource"
+          }
+        }
+      }
+    },
+    "GoodModel": {
+      "required": [
+        "NomenclatureId",
+        "Name",
+        "UnitOfMeasurement",
+        "Nds",
+        "SalePrice",
+        "Type"
+      ],
+      "type": "object",
+      "properties": {
+        "Id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "FirmId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "NomenclatureId": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Article": {
+          "type": "string"
+        },
+        "UnitOfMeasurement": {
+          "type": "string"
+        },
+        "Nds": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "SalePrice": {
+          "format": "double",
+          "type": "number"
+        },
+        "IsDeleted": {
+          "type": "boolean"
+        },
+        "Type": {
+          "format": "int32",
+          "enum": [
+            0,
+            1,
+            -1
+          ],
+          "type": "integer"
+        },
+        "NdsPositionType": {
+          "format": "int32",
+          "enum": [
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        }
+      }
+    },
+    "NomenclatureRepresentationCollection": {
+      "type": "object",
+      "properties": {
+        "ResourceList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NomenclatureRepresentation"
+          }
+        },
+        "_links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        },
+        "_embedded": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EmbeddedResource"
+          }
+        }
+      }
+    },
+    "NomenclatureRepresentation": {
+      "required": [
+        "ParentNomenclatureId",
+        "Name"
+      ],
+      "type": "object",
+      "properties": {
+        "Id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "FirmId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ParentNomenclatureId": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "NomenclatureType": {
+          "format": "int32",
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        },
+        "_links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        },
+        "_embedded": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EmbeddedResource"
+          }
+        }
+      }
+    },
+    "NomenclatureModel": {
+      "required": [
+        "ParentNomenclatureId",
+        "Name"
+      ],
+      "type": "object",
+      "properties": {
+        "Id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "FirmId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ParentNomenclatureId": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "NomenclatureType": {
+          "format": "int32",
+          "enum": [
+            0,
+            1
+          ],
+          "type": "integer"
+        }
+      }
+    },
+    "StockRepresentationCollection": {
+      "type": "object",
+      "properties": {
+        "ResourceList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StockRepresentation"
+          }
+        },
+        "_links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        },
+        "_embedded": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EmbeddedResource"
+          }
+        }
+      }
+    },
+    "StockRepresentation": {
+      "required": [
+        "Name"
+      ],
+      "type": "object",
+      "properties": {
+        "Id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "IsMain": {
+          "type": "boolean"
+        },
+        "StockType": {
+          "format": "int32",
+          "enum": [
+            1,
+            2
+          ],
+          "type": "integer"
+        },
+        "_links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        },
+        "_embedded": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EmbeddedResource"
+          }
+        }
+      }
+    },
+    "StockModel": {
+      "required": [
+        "Name"
+      ],
+      "type": "object",
+      "properties": {
+        "Id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "IsMain": {
+          "type": "boolean"
+        },
+        "StockType": {
+          "format": "int32",
+          "enum": [
+            1,
+            2
+          ],
+          "type": "integer"
+        }
+      }
+    },
+    "KontragentRepresentationCollection": {
+      "type": "object",
+      "properties": {
+        "ResourceList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/KontragentRepresentation"
+          }
+        },
+        "_links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        },
+        "_embedded": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EmbeddedResource"
+          }
+        }
+      }
+    },
+    "KontragentRepresentation": {
+      "description": "Контрагент",
+      "type": "object",
+      "properties": {
+        "Id": {
+          "format": "int32",
+          "description": "числовой идентификатор",
+          "type": "integer"
+        },
+        "Inn": {
+          "description": "ИНН",
+          "type": "string"
+        },
+        "Ogrn": {
+          "description": "ОГРН",
+          "type": "string"
+        },
+        "Okpo": {
+          "description": "ОКПО",
+          "type": "string"
+        },
+        "Name": {
+          "description": "Название. Фамилия, имя, отчество еслии контрагент физ. лицо.",
+          "type": "string"
+        },
+        "Type": {
+          "description": "Тип контрагента",
+          "enum": [
+            "Undefined",
+            "Kontragent",
+            "Buyer",
+            "Seller",
+            "Other"
+          ],
+          "type": "string"
+        },
+        "Form": {
+          "description": "Организационная форма контрагента",
+          "enum": [
+            "UL",
+            "IP",
+            "FL",
+            "NR"
+          ],
+          "type": "string"
+        },
+        "IsArchived": {
+          "description": "Является ли контрагент архивным",
+          "type": "boolean"
+        },
+        "LegalAddress": {
+          "type": "string"
+        },
+        "ActualAddress": {
+          "type": "string"
+        },
+        "RegistrationAddress": {
+          "type": "string"
+        },
+        "TaxpayerNumber": {
+          "type": "string"
+        },
+        "AdditionalRegNumber": {
+          "type": "string"
+        },
+        "_links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        },
+        "_embedded": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EmbeddedResource"
+          }
+        }
+      }
+    },
+    "KontragentModel": {
+      "type": "object",
+      "properties": {
+        "Id": {
+          "format": "int32",
+          "description": "÷èñëîâîé èäåíòèôèêàòîð",
+          "type": "integer"
+        },
+        "Inn": {
+          "description": "ÈÍÍ",
+          "type": "string"
+        },
+        "Ogrn": {
+          "description": "ÎÃÐÍ",
+          "type": "string"
+        },
+        "Okpo": {
+          "description": "ÎÊÏÎ",
+          "type": "string"
+        },
+        "Name": {
+          "description": "Íàçâàíèå. Ôàìèëèÿ, èìÿ, îò÷åñòâî åñëèè êîíòðàãåíò ôèç. ëèöî.",
+          "type": "string"
+        },
+        "ShortName": {
+          "description": "Êðàòêîå íàçâàíèå",
+          "type": "string"
+        },
+        "Type": {
+          "description": "Òèï êîíòðàãåíòà",
+          "enum": [
+            "Undefined",
+            "Kontragent",
+            "Buyer",
+            "Seller",
+            "Other"
+          ],
+          "type": "string"
+        },
+        "Form": {
+          "description": "Îðãàíèçàöèîííàÿ ôîðìà êîíòðàãåíòà",
+          "enum": [
+            "UL",
+            "IP",
+            "FL",
+            "NR"
+          ],
+          "type": "string"
+        },
+        "IsArchived": {
+          "description": "ßâëÿåòñÿ ëè êîíòðàãåíò àðõèâíûì",
+          "type": "boolean"
+        },
+        "LegalAddress": {
+          "type": "string"
+        },
+        "ActualAddress": {
+          "type": "string"
+        },
+        "RegistrationAddress": {
+          "type": "string"
+        },
+        "TaxpayerNumber": {
+          "type": "string"
+        },
+        "AdditionalRegNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "KontragentSettlementAccountRepresentationCollection": {
+      "type": "object",
+      "properties": {
+        "KontragentId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ResourceList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/KontragentSettlementAccountRepresentation"
+          }
+        },
+        "_links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        },
+        "_embedded": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EmbeddedResource"
+          }
+        }
+      }
+    },
+    "KontragentSettlementAccountRepresentation": {
+      "required": [
+        "Number"
+      ],
+      "type": "object",
+      "properties": {
+        "Id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "Number": {
+          "type": "string"
+        },
+        "NonResidentBankName": {
+          "type": "string"
+        },
+        "Comment": {
+          "type": "string"
+        },
+        "_links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        },
+        "_embedded": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EmbeddedResource"
+          }
+        }
+      }
+    },
+    "KontragentSettlementAccountModel": {
+      "required": [
+        "Number"
+      ],
+      "type": "object",
+      "properties": {
+        "Id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "Number": {
+          "type": "string"
+        },
+        "NonResidentBankName": {
+          "type": "string"
+        },
+        "Comment": {
+          "type": "string"
+        }
+      }
+    },
+    "KontragentContactRepresentationCollection": {
+      "type": "object",
+      "properties": {
+        "KontragentId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ResourceList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/KontragentContactRepresentation"
+          }
+        },
+        "_links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        },
+        "_embedded": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EmbeddedResource"
+          }
+        }
+      }
+    },
+    "KontragentContactRepresentation": {
+      "required": [
+        "Fio"
+      ],
+      "type": "object",
+      "properties": {
+        "Id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "Fio": {
+          "type": "string"
+        },
+        "Skype": {
+          "type": "string"
+        },
+        "Emails": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/KontragentContactEmail"
+          }
+        },
+        "Phones": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/KontragentContactPhone"
+          }
+        },
+        "_links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        },
+        "_embedded": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EmbeddedResource"
+          }
+        }
+      }
+    },
+    "KontragentContactEmail": {
+      "type": "object",
+      "properties": {
+        "Id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "Email": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        }
+      }
+    },
+    "KontragentContactPhone": {
+      "type": "object",
+      "properties": {
+        "Id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "Number": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        }
+      }
+    },
+    "KontragentContactModel": {
+      "required": [
+        "Fio"
+      ],
+      "type": "object",
+      "properties": {
+        "Id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "Fio": {
+          "type": "string"
+        },
+        "Skype": {
+          "type": "string"
+        },
+        "Emails": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/KontragentContactEmail"
+          }
+        },
+        "Phones": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/KontragentContactPhone"
+          }
+        }
+      }
+    },
+    "ActRepresentationCollection": {
+      "type": "object",
+      "properties": {
+        "ResourceList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ActRepresentationBase"
+          }
+        },
+        "_links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        },
+        "_embedded": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EmbeddedResource"
+          }
+        }
+      }
+    },
+    "ActRepresentationBase": {
+      "required": [
+        "KontragentId",
+        "Number",
+        "DocDate"
+      ],
+      "type": "object",
+      "properties": {
+        "KontragentId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "BillId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ProjectId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "NdsPositionType": {
+          "format": "int32",
+          "enum": [
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        },
+        "OnHands": {
+          "type": "string"
+        },
+        "Id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "Number": {
+          "type": "string"
+        },
+        "DocDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "Context": {
+          "$ref": "#/definitions/Context"
+        },
+        "_links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        },
+        "_embedded": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EmbeddedResource"
+          }
+        }
+      }
+    },
+    "ActModel": {
+      "required": [
+        "KontragentId",
+        "Number",
+        "DocDate"
+      ],
+      "type": "object",
+      "properties": {
+        "KontragentId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "BillId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ProjectId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "NdsPositionType": {
+          "format": "int32",
+          "enum": [
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        },
+        "Invoice": {
+          "$ref": "#/definitions/Invoice"
+        },
+        "OnHands": {
+          "type": "string"
+        },
+        "Items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Item"
+          }
+        },
+        "Id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "Number": {
+          "type": "string"
+        },
+        "DocDate": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "Invoice": {
+      "type": "object",
+      "properties": {
+        "Id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "Number": {
+          "type": "string"
+        },
+        "DocDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "AdvanceInvoices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AdvanceInvoice"
+          }
+        }
+      }
+    },
+    "Item": {
+      "required": [
+        "Type",
+        "Price",
+        "Name",
+        "Count",
+        "Unit"
+      ],
+      "type": "object",
+      "properties": {
+        "Type": {
+          "format": "int32",
+          "enum": [
+            0,
+            1,
+            2
+          ],
+          "type": "integer"
+        },
+        "Price": {
+          "format": "double",
+          "type": "number"
+        },
+        "NdsType": {
+          "format": "int32",
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "type": "integer"
+        },
+        "SumWithoutNds": {
+          "format": "double",
+          "type": "number"
+        },
+        "NdsSum": {
+          "format": "double",
+          "type": "number"
+        },
+        "SumWithNds": {
+          "format": "double",
+          "type": "number"
+        },
+        "DiscountRate": {
+          "format": "double",
+          "type": "number"
+        },
+        "Id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "StockProductId": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Count": {
+          "format": "double",
+          "type": "number"
+        },
+        "Unit": {
+          "type": "string"
+        }
+      }
+    },
+    "AdvanceInvoice": {
+      "type": "object",
+      "properties": {
+        "Id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "Number": {
+          "type": "string"
+        },
+        "Total": {
+          "format": "double",
+          "type": "number"
+        }
+      }
+    },
+    "ActRepresentation": {
+      "required": [
+        "KontragentId",
+        "Number",
+        "DocDate"
+      ],
+      "type": "object",
+      "properties": {
+        "Invoice": {
+          "$ref": "#/definitions/Invoice"
+        },
+        "Items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Item"
+          }
+        },
+        "KontragentId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "BillId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ProjectId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "NdsPositionType": {
+          "format": "int32",
+          "enum": [
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        },
+        "OnHands": {
+          "type": "string"
+        },
+        "Id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "Number": {
+          "type": "string"
+        },
+        "DocDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "Context": {
+          "$ref": "#/definitions/Context"
+        },
+        "_links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        },
+        "_embedded": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EmbeddedResource"
+          }
+        }
+      }
+    },
+    "BillRepresentationCollection": {
+      "type": "object",
+      "properties": {
+        "ResourceList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BillRepresentation"
+          }
+        },
+        "_links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        },
+        "_embedded": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EmbeddedResource"
+          }
+        }
+      }
+    },
+    "BillRepresentation": {
+      "required": [
+        "KontragentId",
+        "SettlementAccount",
+        "Number",
+        "DocDate"
+      ],
+      "type": "object",
+      "properties": {
+        "Type": {
+          "type": "string"
+        },
+        "Status": {
+          "format": "int32",
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "type": "integer"
+        },
+        "KontragentId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "SettlementAccount": {
+          "$ref": "#/definitions/SettlementAccountModel"
+        },
+        "ProjectId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ProjectNumber": {
+          "type": "string"
+        },
+        "DeadLine": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "AdditionalInfo": {
+          "type": "string"
+        },
+        "ContractSubject": {
+          "type": "string"
+        },
+        "NdsPositionType": {
+          "format": "int32",
+          "enum": [
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        },
+        "Items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Item"
+          }
+        },
+        "Online": {
+          "type": "string"
+        },
+        "IsCovered": {
+          "type": "boolean"
+        },
+        "UseStampAndSign": {
+          "type": "boolean"
+        },
+        "Id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "Number": {
+          "type": "string"
+        },
+        "DocDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "Context": {
+          "$ref": "#/definitions/Context"
+        },
+        "_links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        },
+        "_embedded": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EmbeddedResource"
+          }
+        }
+      }
+    },
+    "SettlementAccountModel": {
+      "type": "object",
+      "properties": {
+        "AccountId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "AccountNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "BillPostModel": {
+      "required": [
+        "KontragentId",
+        "Number",
+        "DocDate"
+      ],
+      "type": "object",
+      "properties": {
+        "ProjectId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ProjectNumber": {
+          "type": "string"
+        },
+        "Type": {
+          "type": "string"
+        },
+        "Status": {
+          "format": "int32",
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "type": "integer"
+        },
+        "KontragentId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "DeadLine": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "AdditionalInfo": {
+          "type": "string"
+        },
+        "ContractSubject": {
+          "type": "string"
+        },
+        "NdsPositionType": {
+          "format": "int32",
+          "enum": [
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        },
+        "IsCovered": {
+          "type": "boolean"
+        },
+        "UseStampAndSign": {
+          "type": "boolean"
+        },
+        "Items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Item"
+          }
+        },
+        "Id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "Number": {
+          "type": "string"
+        },
+        "DocDate": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "BillBaseModel": {
+      "required": [
+        "KontragentId",
+        "Number",
+        "DocDate"
+      ],
+      "type": "object",
+      "properties": {
+        "Type": {
+          "type": "string"
+        },
+        "Status": {
+          "format": "int32",
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "type": "integer"
+        },
+        "KontragentId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "DeadLine": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "AdditionalInfo": {
+          "type": "string"
+        },
+        "ContractSubject": {
+          "type": "string"
+        },
+        "NdsPositionType": {
+          "format": "int32",
+          "enum": [
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        },
+        "IsCovered": {
+          "type": "boolean"
+        },
+        "UseStampAndSign": {
+          "type": "boolean"
+        },
+        "Items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Item"
+          }
+        },
+        "Id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "Number": {
+          "type": "string"
+        },
+        "DocDate": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "InvoiceRepresentationCollection": {
+      "type": "object",
+      "properties": {
+        "ResourceList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InvoiceRepresentation"
+          }
+        },
+        "_links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        },
+        "_embedded": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EmbeddedResource"
+          }
+        }
+      }
+    },
+    "InvoiceRepresentation": {
+      "required": [
+        "Number",
+        "DocDate"
+      ],
+      "type": "object",
+      "properties": {
+        "Sum": {
+          "format": "double",
+          "type": "number"
+        },
+        "NdsPositionType": {
+          "format": "int32",
+          "enum": [
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        },
+        "SenderId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "SupplierId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ReceiverId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "PayerId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "BillId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ProjectId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Item"
+          }
+        },
+        "PaymentNumber": {
+          "type": "string"
+        },
+        "PaymentDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "Id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "Number": {
+          "type": "string"
+        },
+        "DocDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "Context": {
+          "$ref": "#/definitions/Context"
+        },
+        "_links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        },
+        "_embedded": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EmbeddedResource"
+          }
+        }
+      }
+    },
+    "InvoiceModel": {
+      "required": [
+        "Number",
+        "DocDate"
+      ],
+      "type": "object",
+      "properties": {
+        "Sum": {
+          "format": "double",
+          "type": "number"
+        },
+        "NdsPositionType": {
+          "format": "int32",
+          "enum": [
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        },
+        "SenderId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "SupplierId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ReceiverId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "PayerId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "BillId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ProjectId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "PaymentNumber": {
+          "type": "string"
+        },
+        "PaymentDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "Items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Item"
+          }
+        },
+        "Id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "Number": {
+          "type": "string"
+        },
+        "DocDate": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "RetailReportRepresentationCollection": {
+      "type": "object",
+      "properties": {
+        "ResourceList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RetailReportRepresentation"
+          }
+        },
+        "_links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        },
+        "_embedded": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EmbeddedResource"
+          }
+        }
+      }
+    },
+    "RetailReportRepresentation": {
+      "required": [
+        "StartDate",
+        "EndDate",
+        "StockId",
+        "Number",
+        "DocDate"
+      ],
+      "type": "object",
+      "properties": {
+        "StartDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "EndDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "StockId": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "Items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BaseItem"
+          }
+        },
+        "Id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "Number": {
+          "type": "string"
+        },
+        "DocDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "Context": {
+          "$ref": "#/definitions/Context"
+        },
+        "_links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        },
+        "_embedded": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EmbeddedResource"
+          }
+        }
+      }
+    },
+    "BaseItem": {
+      "required": [
+        "Name",
+        "Count",
+        "Unit"
+      ],
+      "type": "object",
+      "properties": {
+        "Id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "StockProductId": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Count": {
+          "format": "double",
+          "type": "number"
+        },
+        "Unit": {
+          "type": "string"
+        }
+      }
+    },
+    "RetailReportPostModel": {
+      "required": [
+        "StockId",
+        "StartDate",
+        "EndDate",
+        "Number",
+        "DocDate"
+      ],
+      "type": "object",
+      "properties": {
+        "StockId": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "StartDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "EndDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "Items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BaseItem"
+          }
+        },
+        "Id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "Number": {
+          "type": "string"
+        },
+        "DocDate": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "RetailReportBaseModel": {
+      "required": [
+        "StartDate",
+        "EndDate",
+        "Number",
+        "DocDate"
+      ],
+      "type": "object",
+      "properties": {
+        "StartDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "EndDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "Items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BaseItem"
+          }
+        },
+        "Id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "Number": {
+          "type": "string"
+        },
+        "DocDate": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "WayBillRepresentationCollection": {
+      "type": "object",
+      "properties": {
+        "ResourceList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/WayBillRepresentationBase"
+          }
+        },
+        "_links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        },
+        "_embedded": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EmbeddedResource"
+          }
+        }
+      }
+    },
+    "WayBillRepresentationBase": {
+      "required": [
+        "Number",
+        "DocDate"
+      ],
+      "type": "object",
+      "properties": {
+        "Sum": {
+          "format": "double",
+          "type": "number"
+        },
+        "NdsPositionType": {
+          "format": "int32",
+          "enum": [
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        },
+        "SenderId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "SupplierId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ReceiverId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "PayerId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "KontragentId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "BillId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ProjectId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "OnHands": {
+          "type": "string"
+        },
+        "UseStampAndSign": {
+          "type": "boolean"
+        },
+        "Id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "Number": {
+          "type": "string"
+        },
+        "DocDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "Context": {
+          "$ref": "#/definitions/Context"
+        },
+        "_links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        },
+        "_embedded": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EmbeddedResource"
+          }
+        }
+      }
+    },
+    "WayBillModel": {
+      "required": [
+        "Number",
+        "DocDate"
+      ],
+      "type": "object",
+      "properties": {
+        "Sum": {
+          "format": "double",
+          "type": "number"
+        },
+        "NdsPositionType": {
+          "format": "int32",
+          "enum": [
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        },
+        "SenderId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "SupplierId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ReceiverId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "PayerId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "KontragentId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "BillId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ProjectId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "Invoice": {
+          "$ref": "#/definitions/Invoice"
+        },
+        "OnHands": {
+          "type": "string"
+        },
+        "UseStampAndSign": {
+          "type": "boolean"
+        },
+        "Items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Item"
+          }
+        },
+        "Id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "Number": {
+          "type": "string"
+        },
+        "DocDate": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "WayBillRepresentation": {
+      "required": [
+        "Number",
+        "DocDate"
+      ],
+      "type": "object",
+      "properties": {
+        "Invoice": {
+          "$ref": "#/definitions/Invoice"
+        },
+        "Items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Item"
+          }
+        },
+        "Sum": {
+          "format": "double",
+          "type": "number"
+        },
+        "NdsPositionType": {
+          "format": "int32",
+          "enum": [
+            1,
+            2,
+            3
+          ],
+          "type": "integer"
+        },
+        "SenderId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "SupplierId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ReceiverId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "PayerId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "KontragentId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "BillId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ProjectId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "OnHands": {
+          "type": "string"
+        },
+        "UseStampAndSign": {
+          "type": "boolean"
+        },
+        "Id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "Number": {
+          "type": "string"
+        },
+        "DocDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "Context": {
+          "$ref": "#/definitions/Context"
+        },
+        "_links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        },
+        "_embedded": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EmbeddedResource"
+          }
+        }
+      }
+    }
+  }
+}
